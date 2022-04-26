@@ -4,15 +4,58 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="8dp"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txt_input_phone_number_layout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:hint="@string/phone_number"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="8dp">
 
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/input_edt_phone_number"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_send_sms"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/generate_otp"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/txt_input_phone_number_layout"
+        app:layout_constraintStart_toStartOf="@+id/txt_input_phone_number_layout"
+        app:layout_constraintTop_toBottomOf="@+id/txt_input_phone_number_layout" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txt_input_code_otp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="@string/otp_code"
+        app:layout_constraintTop_toBottomOf="@id/button_send_sms">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/input_edt_code_otp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/verify_otp"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/verify_otp"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@+id/txt_input_code_otp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
