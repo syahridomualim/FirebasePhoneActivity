@@ -27,20 +27,20 @@ class MainActivity : AppCompatActivity() {
 
         mAuth = FirebaseAuth.getInstance()
 
-        val phoneNumber = binding.inputEdtPhoneNumber.text.toString()
-        val otpCode = binding.inputEdtCodeOtp.text.toString()
         binding.buttonSendSms.setOnClickListener {
-            if (TextUtils.isEmpty(phoneNumber)) {
+            if (TextUtils.isEmpty(binding.inputEdtPhoneNumber.text)) {
                 Toast.makeText(this, "Please fill phone number", Toast.LENGTH_SHORT).show()
             } else {
+                val phoneNumber = binding.inputEdtPhoneNumber.text.toString()
                 sendVerificationCode(phoneNumber)
             }
         }
 
         binding.verifyOtp.setOnClickListener {
-            if (TextUtils.isEmpty(otpCode)) {
+            if (TextUtils.isEmpty(binding.inputEdtCodeOtp.text)) {
                 Toast.makeText(this, "Please fill the otp code", Toast.LENGTH_SHORT).show()
             } else {
+                val otpCode = binding.inputEdtCodeOtp.text.toString()
                 verifyCode(otpCode)
             }
         }
@@ -69,7 +69,7 @@ class MainActivity : AppCompatActivity() {
     ) {
 
         val options = PhoneAuthOptions.newBuilder(mAuth)
-            .setPhoneNumber(phoneNumber)       // Phone number to verify
+            .setPhoneNumber("+62$phoneNumber")       // Phone number to verify
             .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
             .setActivity(this)                 // Activity (for callback binding)
             .setCallbacks(callbacks)          // OnVerificationStateChangedCallbacks
